@@ -1,0 +1,2 @@
+# wayz
+For Zephyr RTOS
