@@ -1,0 +1,8 @@
+name: wayz
+build:
+  cmake: .
+  kconfig: Kconfig
+  settings:
+      dts_root: .
+      board_root: .
+      soc_root: .
