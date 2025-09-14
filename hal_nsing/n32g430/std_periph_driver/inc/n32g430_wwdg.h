@@ -81,7 +81,7 @@ extern "C"
 /* CFG register bit mask **/
 #define CFG_TIMERB_MASK ((uint32_t)0xFFFF3FFF)
 #define CFG_W_MASK ((uint32_t)0xFFFFC000)
-#define BIT_MASK ((uint16_t)0x3FFF)
+#define BIT_MASK_3FFF ((uint16_t)0x3FFF)
 
     void WWDG_Reset(void);
     void WWDG_Prescaler_Division_Set(uint32_t prescaler_division);

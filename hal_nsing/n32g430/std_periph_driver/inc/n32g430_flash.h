@@ -85,8 +85,8 @@ extern "C"
 #define FLASH_LATENCY_MASK ((uint32_t)FLASH_AC_LATENCY)
 
 /** FLASH Keys **/
-#define FLASH_KEY1 ((uint32_t)0x45670123)
-#define FLASH_KEY2 ((uint32_t)0xCDEF89AB)
+#define N32_FLASH_KEY1 ((uint32_t)0x45670123)
+#define N32_FLASH_KEY2 ((uint32_t)0xCDEF89AB)
 
 /** Flash Control Register bits **/
 #define FLASH_CTRL_SET_PG ((uint32_t)FLASH_CTRL_PG)

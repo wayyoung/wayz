@@ -1,0 +1,51 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/ {
+    chosen {
+        zephyr,console = &usart1;
+		zephyr,shell-uart = &usart1;
+        zephyr,display = &ssd1306_display;
+    };
+};
+
+&i2c1 {
+	pinctrl-0 =<&i2c1_pb6_pb7>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	ina237: ina237@40 {
+		compatible = "ti,ina237";
+		reg = <0x40>;
+		current-lsb-microamps = <100>;
+		rshunt-micro-ohms = <2000>;
+	};
+};
+
+&i2c2 {
+	pinctrl-0 =<&i2c2_pa9_pa10>;
+	pinctrl-names = "default";
+
+	status = "okay";
+    	ssd1306_display: ssd1306@3c {
+		compatible = "solomon,ssd1306fb";
+		reg = <0x3c>;
+		width = <64>;
+		height = <32>;
+		segment-offset = <0>;
+		page-offset = <0>;
+		display-offset = <0>;
+		multiplex-ratio = <63>;
+		segment-remap;
+		com-invdir;
+		prechargep = <0x22>;
+	};
+
+};
+
+&usart1 {
+	pinctrl-0 =<&usart1_pa4_pa5>;
+	pinctrl-names = "default";
+	status = "okay";
+};

@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_N32G430F8_EVB
+	select SOC_SERIES_N32G430
+	select SOC_N32G430F8

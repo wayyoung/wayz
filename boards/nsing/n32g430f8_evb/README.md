@@ -1,0 +1,1 @@
+west build -p -b n32g430f8_evb samples/basic/blinky -- -DZEPHYR_EXTRA_MODULES=$HOME/zephyrproject/wayz

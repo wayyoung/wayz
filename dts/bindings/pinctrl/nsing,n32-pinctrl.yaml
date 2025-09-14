@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: N32 pinctrl
+
+compatible: "nsing,n32-pinctrl"
+
+include: base.yaml
+
+child-binding:
+  description: |
+    N32 pin controller pin configuration state nodes.
+  child-binding:
+    description: |
+      N32 pin controller pin configuration group.
+
+    properties:
+      pinmux:
+        required: true
+        type: array
+        description: |
+          An array of pin setting.
+
+      remap:
+        type: int
+        default: 0
+        description: |
+          N32 pin remap setting.

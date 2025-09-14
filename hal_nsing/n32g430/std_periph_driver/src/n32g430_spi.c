@@ -239,7 +239,7 @@ void SPI_DataDirection_Config(SPI_Module *SPIx, uint16_t DataDirection)
 void SPI_SpiMode_Config(SPI_Module *SPIx, uint16_t SpiMode)
 {
     /* Clear SPI_CTRL1 MSEL bits */
-    SPIx->CTRL1 &= SPI_MODE_MASK;
+    SPIx->CTRL1 &= N32_SPI_MODE_MASK;
     /* Set SPI_CTRL1 MSEL bits */
     SPIx->CTRL1 |= SpiMode;
 }

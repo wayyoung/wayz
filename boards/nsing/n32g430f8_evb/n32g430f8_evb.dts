@@ -1,0 +1,40 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+
+#include <nsing/n32g430/n32g430f8.dtsi>
+#include <nsing/n32g430/n32g430-pinctrl.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	model = "N32G430F8_EVB";
+	compatible = "nsing,n32g430f8_evb";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		
+	};
+
+};
+
+&gpioa {
+	status = "okay";
+};
+
+&gpiob {
+	status = "okay";
+};
+
+&gpioc {
+	status = "disabled";
+};
+
+&gpiod {
+	status = "disabled";
+};
+
+

@@ -109,7 +109,7 @@ extern "C"
 #define SPI_DIR_SINGLELINE_TX (SPI_CTRL1_BIDIRMODE | SPI_CTRL1_BIDIROEN)
 
 /** SPI mode **/
-#define SPI_MODE_MASK (~SPI_CTRL1_MSEL) /* MSEL bits Mask */
+#define N32_SPI_MODE_MASK (~SPI_CTRL1_MSEL) /* MSEL bits Mask */
 #define SPI_MODE_MASTER (SPI_CTRL1_MSEL)
 #define SPI_MODE_SLAVE ((uint16_t)0x0000)
 
