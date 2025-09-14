@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_N32G430F8_EVB
+
+config BOARD
+	default "N32G430F8_EVB"
+
+endif

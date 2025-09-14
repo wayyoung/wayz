@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if CLOCK_CONTROL
+
+config CLOCK_CONTROL_N32
+	bool "CLOCK_CTRL Driver for N32 family of MCUs"
+	default y
+	depends on SOC_FAMILY_NSING_N32
+	depends on DT_HAS_NSING_N32_RCC_ENABLED
+	select N32_HAL_RCC
+help
+	  Enable CLOCK_CTRL driver for N32 MCUs
+
+endif # CLOCK_CONTROL

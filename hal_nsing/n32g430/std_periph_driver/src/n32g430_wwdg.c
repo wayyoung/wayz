@@ -105,7 +105,7 @@ void WWDG_Window_Value_Set(uint16_t window_value)
     temp_value = WWDG->CFG & CFG_W_MASK;
 
     /* Set W[13:0] bits according to window_value value */
-    temp_value |= window_value & (uint32_t)BIT_MASK;
+    temp_value |= window_value & (uint32_t)BIT_MASK_3FFF;
 
     /* Store the new value */
     WWDG->CFG = temp_value;
@@ -132,7 +132,7 @@ void WWDG_Interrupt_Enable(void)
 void WWDG_Counter_Value_Set(uint16_t counter_value)
 {
     uint32_t temp_value = 0x00U;
-    temp_value = (counter_value & BIT_MASK);
+    temp_value = (counter_value & BIT_MASK_3FFF);
     /* Write the T[13:0] bits to configure the counter value, which can be written directly
        without read-modify-write; only write 1 to the ACTB bit to activate the window watchdog */
     WWDG->CTRL = temp_value;

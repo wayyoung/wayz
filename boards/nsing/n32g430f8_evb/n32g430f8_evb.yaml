@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: Apache-2.0
+
+identifier: n32g430f8_evb
+name: N32G430F8_EVB
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+ram: 16
+flash: 64
+supported:
+  - gpio
+  - uart
+  - i2c
+testing:
+  ignore_tags:
+    - net
+    - bluetooth

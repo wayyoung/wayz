@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if RESET
+
+config PRST_N32
+	bool "N32 Periph Reset Controller Driver"
+	default y
+	depends on DT_HAS_NSING_N32_PRST_ENABLED
+	depends on SOC_FAMILY_NSING_N32
+help
+	  Enable RESET driver for N32 MCUs
+
+endif # RESET

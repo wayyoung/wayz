@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: Apache-2.0
+
+zephyr_library_sources(std_periph_driver/src/misc.c)
+zephyr_library_sources(CMSIS/device/system_n32g430.c)
+
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_ADC   std_periph_driver/src/n32g430_adc.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_CAN   std_periph_driver/src/n32g430_can.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_CRC   std_periph_driver/src/n32g430_crc.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_DAC   std_periph_driver/src/n32g430_dac.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_DBG   std_periph_driver/src/n32g430_dbg.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_DMA   std_periph_driver/src/n32g430_dma.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_DVP   std_periph_driver/src/n32g430_dvp.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_EXTI  std_periph_driver/src/n32g430_exti.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_FLASH std_periph_driver/src/n32g430_flash.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_GPIO  std_periph_driver/src/n32g430_gpio.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_I2C   std_periph_driver/src/n32g430_i2c.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_IWDG  std_periph_driver/src/n32g430_iwdg.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_PWR   std_periph_driver/src/n32g430_pwr.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_QSPI  std_periph_driver/src/n32g430_qspi.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_RCC   std_periph_driver/src/n32g430_rcc.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_RTC   std_periph_driver/src/n32g430_rtc.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_SD    std_periph_driver/src/n32g430_sdio.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_SPI   std_periph_driver/src/n32g430_spi.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_TIM   std_periph_driver/src/n32g430_tim.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_USART std_periph_driver/src/n32g430_usart.c)
+zephyr_library_sources_ifdef(CONFIG_N32_HAL_WWDG  std_periph_driver/src/n32g430_wwdg.c)
+
+add_subdirectory(ext)

@@ -536,9 +536,9 @@ void GPIO_Mode_Set(GPIO_Module *GPIOx, uint32_t mode, uint32_t position)
  *\*\          - GPIOC
  *\*\          - GPIOD
  *\*\param  pull
- *\*\          - GPIO_NO_PULL
- *\*\          - GPIO_PULL_UP
- *\*\          - GPIO_PULL_DOWN
+ *\*\          - N32_GPIO_NO_PULL
+ *\*\          - N32_GPIO_PULL_UP
+ *\*\          - N32_GPIO_PULL_DOWN
  *\*\param  position
  *\*\          - 0x00 ~ 0x0F    0x00 represents GPIO_PIN_0,
  *\*\                           0x01 represents GPIO_PIN_1
@@ -684,7 +684,7 @@ void GPIO_Structure_Initialize(GPIO_InitType *GPIO_InitStruct)
     GPIO_InitStruct->GPIO_Slew_Rate = GPIO_SLEW_RATE_FAST;
     GPIO_InitStruct->GPIO_Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct->GPIO_Alternate = GPIO_NO_AF;
-    GPIO_InitStruct->GPIO_Pull = GPIO_NO_PULL;
+    GPIO_InitStruct->GPIO_Pull = GPIO_PS_NO_PULL;
     GPIO_InitStruct->GPIO_Current = GPIO_DS_2MA;
 }
 

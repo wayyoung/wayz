@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: N32 periph reset controller
+
+compatible: "nsing,n32-prst"
+
+include: [reset-controller.yaml, base.yaml]
+
+properties:
+  "#reset-cells":
+    const: 1
+
+reset-cells:
+  - id

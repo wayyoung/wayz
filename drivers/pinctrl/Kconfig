@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if PINCTRL
+
+config PINCTRL_N32
+	bool "PINCTRL Driver for N32"
+    default y
+	depends on PINCTRL
+	depends on SOC_FAMILY_NSING_N32
+
+endif # PINCTRL

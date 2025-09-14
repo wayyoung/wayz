@@ -1,0 +1,186 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <arm/armv7-m.dtsi>
+#include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/clock/n32g430-clock.h>
+#include <freq.h>
+
+/ {
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-m4f";
+			reg = <0>;
+		};
+	};
+
+	sram0: memory@20000000 {
+		compatible = "mmio-sram";
+	};
+
+	soc {
+		rcc: rcc@40021000 {
+			compatible = "nsing,n32-rcc";
+			clocks-controller;
+			#clock-cells = <1>;
+			reg = <0x40021000 0x400>;
+			status = "okay";
+
+			prst: reset-controller {
+				compatible = "nsing,n32-prst";
+				#reset-cells = <1>;
+				status = "okay";
+			};
+		};
+		flash: flash-controller@40022000 {
+			compatible = "nsing,n32-flash-controller";
+			reg = <0x40022000 0x400>;
+			interrupts = <4 0>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			flash0: flash@8000000 {
+				reg = <0x08000000 0x10000>;
+				compatible = "soc-nv-flash";
+				write-block-size = <4>;
+				erase-block-size = <2048>;
+			};
+		};
+
+		exti: interrupt-controller@40010400 {
+			compatible = "nsing,n32-exti";
+			interrupt-controller;
+			#interrupt-cells = <1>;
+			reg = <0x40010400 0x400>;
+			num-lines = <24>;
+			interrupts = <6 0>, <7 0>, <8 0>, <9 0>, <10 0>, <22 0>,
+				     <39 0>;
+			interrupt-names = "line0", "line1", "line2",
+					  "line3", "line4", "line5-9",
+					  "line10-15";
+			status = "okay";
+		};
+
+
+		i2c1: i2c@40005400 {
+			compatible = "nsing,n32-i2c";
+			reg = <0x40005400 0x400>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			interrupts = <30 0>, <31 0>;
+			interrupt-names = "event", "error";
+			clock-frequency = <I2C_BITRATE_FAST>;
+			clocks = <&rcc N32_CLOCK_I2C1>;
+			resets = <&prst N32_CLOCK_I2C1>;
+			status = "disabled";
+		};
+
+		i2c2: i2c@40005800 {
+			compatible = "nsing,n32-i2c";
+			reg = <0x40005800 0x400>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			interrupts = <32 0>, <33 0>;
+			interrupt-names = "event", "error";
+			clock-frequency = <I2C_BITRATE_FAST>;
+			clocks = <&rcc N32_CLOCK_I2C2>;
+			resets = <&prst N32_CLOCK_I2C2>;
+			status = "disabled";
+		};
+
+		pinctrl: pin-controller@40023400 {
+			compatible = "nsing,n32-pinctrl";
+			reg = <0x40023400 0x1000>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+			status = "okay";
+
+			gpioa: gpio@40023400 {
+				compatible = "nsing,n32-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40023400 0x400>;
+				clocks = <&rcc N32_CLOCK_GPIOA>;
+				status = "okay";
+			};
+
+			gpiob: gpio@40023800 {
+				compatible = "nsing,n32-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40023800 0x400>;
+				clocks = <&rcc N32_CLOCK_GPIOB>;
+				status = "okay";
+			};
+
+			gpioc: gpio@40023C00 {
+				compatible = "nsing,n32-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40023C00 0x400>;
+				clocks = <&rcc N32_CLOCK_GPIOC>;
+				status = "okay";
+			};
+
+			gpiod: gpio@40024000 {
+				compatible = "nsing,n32-gpio";
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x40024000 0x400>;
+				clocks = <&rcc N32_CLOCK_GPIOD>;
+				status = "okay";
+			};
+
+		usart1: usart1@40013800 {
+			compatible = "nsing,n32-uart";
+			reg = <0x40013800 0x400>;
+			clocks = <&rcc N32_CLOCK_USART1>;
+			interrupts = <36 0>;
+			current-speed = <115200>;
+			status = "disabled";
+		};
+
+		usart2: usart2@40004400 {
+			compatible = "nsing,n32-uart";
+			reg = <0x40004400 0x400>;
+			clocks = <&rcc N32_CLOCK_USART2>;
+			interrupts = <37 0>;
+			current-speed = <115200>;
+			status = "disabled";
+		};
+
+	
+
+		uart3: uart6@40015000 {
+			compatible = "nsing,n32-uart";
+			reg = <0x40015000 0x400>;
+			clocks = <&rcc N32_CLOCK_UART3>;
+			interrupts = <38 0>;
+			current-speed = <115200>;
+			status = "disabled";
+		};
+
+		uart4: uart@40015400 {
+			compatible = "nsing,n32-uart";
+			reg = <0x40015400 0x400>;
+			clocks = <&rcc N32_CLOCK_UART4>;
+			interrupts = <46 0>;
+			current-speed = <115200>;
+			status = "disabled";
+		};
+
+		};
+	};
+};
+
+&nvic {
+	arm,num-irq-priority-bits = <4>;
+};

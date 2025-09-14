@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+
+description: N32 UART
+
+compatible: "nsing,n32-uart"
+
+include: [uart-controller.yaml, pinctrl-device.yaml]
+
+properties:
+  reg:
+    required: true
+
+  interrupts:
+    required: true

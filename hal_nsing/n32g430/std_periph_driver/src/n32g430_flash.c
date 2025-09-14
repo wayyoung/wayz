@@ -272,8 +272,8 @@ FlagStatus FLASH_Cache_LOCK_Status_Get(uint32_t lock_way)
  **/
 void FLASH_Unlock(void)
 {
-    FLASH->KEY = FLASH_KEY1;
-    FLASH->KEY = FLASH_KEY2;
+    FLASH->KEY = N32_FLASH_KEY1;
+    FLASH->KEY = N32_FLASH_KEY2;
 }
 
 /**

@@ -1,0 +1,78 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config HAS_N32_HAL
+	bool
+
+
+if HAS_N32_HAL
+
+config N32_HAL_ADC
+	bool
+
+config N32_HAL_BKP
+	bool
+
+config N32_HAL_CAN
+	bool
+
+config N32_HAL_CRC
+	bool
+
+config N32_HAL_DAC
+	bool
+
+config N32_HAL_DBG
+	bool
+
+config N32_HAL_DMA
+	bool
+
+config N32_HAL_DVP
+	bool
+
+config N32_HAL_EXTI
+	bool
+
+config N32_HAL_FLASH
+	bool
+
+config N32_HAL_GPIO
+	bool
+
+config N32_HAL_I2C
+	bool
+
+config N32_HAL_IWDG
+	bool
+
+config N32_HAL_PWR
+	bool
+
+config N32_HAL_QSPI
+	bool
+
+config N32_HAL_RCC
+	bool
+
+config N32_HAL_RTC
+	bool
+
+config N32_HAL_SD
+	bool
+
+config N32_HAL_SPI
+	bool
+
+config N32_HAL_TIM
+	bool
+
+config N32_HAL_USART
+	bool
+
+config N32_HAL_WWDG
+	bool
+
+config N32_HAL_USB_DC
+	bool
+
+endif # HAS_N32_HAL

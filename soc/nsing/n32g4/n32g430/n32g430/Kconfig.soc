@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config SOC_SERIES_N32G430
+	bool "N32G430 Series MCU"
+	select ARM
+	select CPU_HAS_ARM_MPU
+	select CPU_CORTEX_M4
+	select CPU_HAS_FPU
+	select CORTEX_M_SYSTICK
+	select SOC_FAMILY_NSING_N32
+	help
+	  Enable support for N32G430 MCU series
+
+config SOC_N32G430F8
+	bool "N32G430F8"
+	select SOC_SERIES_N32G430
+
+config N32_HSE_VALUE
+	int "N32_HSE_VALUE"
+	default 8000000
+	help
+	    N32 HSE_VALUE
+
+config N32_SYSCLK_SRC
+	int "N32_SYSCLK_SRC"
+	default 3
+	help
+	    SYSCLK_USE_HSI     0
+		SYSCLK_USE_HSE     1
+		SYSCLK_USE_HSI_PLL 2
+		SYSCLK_USE_HSE_PLL 3

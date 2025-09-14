@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config SOC_FAMILY_NSING_N32
+	bool
+
+config SOC_FAMILY
+	default "nsing_n32" if SOC_FAMILY_NSING_N32
+
+rsource "*/Kconfig.soc"

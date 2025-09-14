@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if GPIO
+
+config GPIO_N32
+	bool "GPIO Driver for N32 family of MCUs"
+    default "y"
+	depends on SOC_FAMILY_NSING_N32
+	select N32_HAL_GPIO
+	help
+	  Enable GPIO driver for N32 MCUs
+
+
+endif # GPIO

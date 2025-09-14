@@ -120,7 +120,7 @@ extern "C"
                                                                                                     : GPIOD)
 
 /**
- *\*\name   GPIO_ModeType.
+ *\*\name   GPIO_MODE.
  *\*\fun    GPIO mode definition.
  *\*\       Values convention: 0x00YZ
  *\*\          - Y  : Output type (Push Pull or Open Drain)
@@ -134,9 +134,9 @@ extern "C"
 #define GPIO_MODE_ANALOG ((uint32_t)0x00000003U) /* Analog Mode */
 
 /** GPIO Pull-Up or Pull-Down Activation **/
-#define GPIO_NO_PULL ((uint32_t)GPIO_PUPD0_0)   /* No Pull-up or Pull-down activation */
-#define GPIO_PULL_UP ((uint32_t)GPIO_PUPD0_1)   /* Pull-up activation */
-#define GPIO_PULL_DOWN ((uint32_t)GPIO_PUPD0_2) /* Pull-down activation */
+#define GPIO_PS_NO_PULL ((uint32_t)GPIO_PUPD0_0)   /* No Pull-up or Pull-down activation */
+#define GPIO_PS_PULL_UP ((uint32_t)GPIO_PUPD0_1)   /* Pull-up activation */
+#define GPIO_PS_PULL_DOWN ((uint32_t)GPIO_PUPD0_2) /* Pull-down activation */
 
 /** slew rate config **/
 #define GPIO_SLEW_RATE_FAST ((uint32_t)0x00000000U)

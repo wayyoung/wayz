@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config EXTI_N32
+	bool "N32 EXTI Controller"
+	default y
+	depends on DT_HAS_NSING_N32_EXTI_ENABLED
+	depends on SOC_FAMILY_NSING_N32
+

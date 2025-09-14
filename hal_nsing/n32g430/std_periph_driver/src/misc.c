@@ -161,7 +161,11 @@ void NVIC_Initializes(NVIC_InitType *NVIC_structure_initializes)
 
         temp_priority_value = temp_priority_value << NVIC_IP_OFFSET;
 
+#if (__CM_CMSIS_VERSION_MAIN < 6)
         NVIC->IP[NVIC_structure_initializes->NVIC_IRQChannel] = temp_priority_value;
+#else
+        NVIC->IPR[NVIC_structure_initializes->NVIC_IRQChannel] = temp_priority_value;
+#endif
 
         /* Enable the Selected IRQ Channels */
         NVIC->ISER[NVIC_structure_initializes->NVIC_IRQChannel >> NVIC_ISER_BIT_LENGTH] =

@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: Apache-2.0
+
+family:
+  - name: nsing
+    series:
+      - name: n32g430
+        socs:
+          - name: n32g430f8
