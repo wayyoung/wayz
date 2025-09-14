@@ -1,0 +1,70 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+
+#include <nsing/n32g430/n32g430f8.dtsi>
+#include <nsing/n32g430/n32g430-pinctrl.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	model = "N32G430F8_EVB";
+	compatible = "taobao,n32g430f8_evb";
+
+	chosen {
+		zephyr,console = &usart1;
+		zephyr,sram = &sram0;
+	};
+
+
+	buttons {
+		compatible = "gpio-keys";
+		sw0: sw0 {
+			gpios = <&gpioa 0 (GPIO_PULL_DOWN|GPIO_ACTIVE_HIGH)>;
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
+
+	aliases {
+		sw0 = &sw0;
+	};
+
+};
+
+
+&gpioa {
+	status = "okay";
+};
+
+&gpiob {
+	status = "okay";
+};
+
+&gpioc {
+	status = "disabled";
+};
+
+&gpiod {
+	status = "disabled";
+};
+
+&usart1 {
+	pinctrl-0 =<&usart1_pa9_pa10>;
+	pinctrl-names = "default";
+	status = "okay";
+	/*
+	dmas = <&dma1 4 (N32_DMA_PERIPH_TX | N32_DMA_PRIORITY_HIGH)>,
+	       <&dma1 5 (N32_DMA_PERIPH_RX | N32_DMA_PRIORITY_HIGH)>;
+	dma-names = "tx", "rx";
+	*/
+};
+
+&i2c1 {
+	pinctrl-0 =<&i2c1_pb8_pb9>;
+	pinctrl-names = "default";
+	status = "disabled";
+};
+
+

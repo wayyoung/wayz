@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: Apache-2.0
+
+board:
+  name: n32g430f8_evb
+  vendor: taobao
+  socs:
+  - name: n32g430f8

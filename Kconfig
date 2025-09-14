@@ -1,2 +1,2 @@
 rsource "drivers/Kconfig"
-rsource "hal_nationstech/Kconfig"
+rsource "hal_nsing/Kconfig"

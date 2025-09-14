@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config SOC_FAMILY_NSING_N32
+	select BUILD_OUTPUT_HEX
+	select HAS_N32_HAL

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if SOC_N32G430F8
+
+config SOC
+	default "n32g430f8"
+
+
+endif # SOC_N32G430F8

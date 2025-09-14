@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if SOC_SERIES_N32G430
+
+config SOC_SERIES
+	default "n32g430"
+
+config NUM_IRQS
+	default 53
+
+rsource "./Kconfig.defconfig.n32g430*"
+
+endif # SOC_SERIES_N32G430
