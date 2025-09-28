@@ -32,10 +32,10 @@ static int pinctrl_n32_set(const pinctrl_soc_pin_t *soc_pin) {
 
   GPIO_InitType GPIO_InitStructure;
   GPIO_Module *gpio = NULL;
-  uint32_t port = N32_PINMUX_GET_PORT(soc_pin->config);
-  uint32_t pin = N32_PINMUX_GET_PIN(soc_pin->config);
-  uint32_t pin_func = N32_PINMUX_GET_FUNC(soc_pin->config);
-  uint32_t pin_mode = N32_PINMUX_GET_PIN_MODE(soc_pin->config);
+  uint32_t port = N32_PINMUX_GET_PORT(soc_pin);
+  uint32_t pin = N32_PINMUX_GET_PIN(soc_pin);
+  uint32_t pin_func = N32_PINMUX_GET_FUNC(soc_pin);
+  uint32_t pin_mode = N32_PINMUX_GET_PIN_MODE(soc_pin);
   
 
   GPIO_Structure_Initialize(&GPIO_InitStructure);

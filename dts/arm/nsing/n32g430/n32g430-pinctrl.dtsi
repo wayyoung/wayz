@@ -5,27 +5,35 @@
 #include <zephyr/dt-bindings/pinctrl/n32g430-gpio-remap.h>
 #include <zephyr/dt-bindings/pinctrl/n32g430-pinctrl.h>
 
+/*
+ pinctrl is pinmux controller, too.
+*/
 &pinctrl {
-	usart1_pa9_pa10: usart1_pa9_pa10 { /*TX RX*/
-		group1 {
-			pinmux = <USART1_TX_PA9>, <USART1_RX_PA10>;
+	usart1_pa9_pa10: usart1_pa9_pa10 {
+		group1{
+			pinmuxs = <&pinctrl USART1_TX_PA9>,
+				<&pinctrl USART1_RX_PA10>;
 		};
 	};
 
 	usart1_pa4_pa5: usart1_pa4_pa5 {
-		group1 {
-			pinmux = <USART1_TX_PA4>, <USART1_RX_PA5>;
+		group1{
+			pinmuxs = <&pinctrl USART1_TX_PA4>,
+				<&pinctrl USART1_RX_PA5>;
 		};
 	};
 
 	i2c1_pb6_pb7: i2c1_pb6_pb7 {
-		group1 {
-			pinmux = <I2C1_SCL_PB6>, <I2C1_SDA_PB7>;
+		group1{
+			pinmuxs = <&pinctrl I2C1_SCL_PB6>,
+				<&pinctrl I2C1_SDA_PB7>;
 		};
 	};
+
 	i2c2_pa9_pa10: i2c2_pa9_pa10 {
-		group1 {
-			pinmux = <I2C2_SCL_PA9>, <I2C2_SDA_PA10>;
+		group1{
+			pinmuxs = <&pinctrl I2C2_SCL_PA9>,
+				<&pinctrl I2C2_SDA_PA10>;
 		};
 	};
 };

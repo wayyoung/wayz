@@ -26,26 +26,24 @@
 	Pinmux:
 	  - bit[0:3] PIN
 	  - bit[4:7] PORT
-	  - bit[8:11] FUNC
 	  - bit[12:15] PIN MODE
 	  - bit[16:19] PIN SPEED
  */
 
 #define PIN_NUM_OFFSET 		0   //4
 #define PORT_NUM_OFFSET 	4	//4
-#define FUNC_NUM_OFFSET 	8	//4
 #define PIN_MODE_OFFSET 	12	//4
 #define UNUSED_OFFSET 		20	//12
 
 
 
-#define N32_PINMUX(port, pin, func, pin_mode) (((func) << FUNC_NUM_OFFSET) | ((port) << PORT_NUM_OFFSET) | ((pin) << PIN_NUM_OFFSET) | ((pin_mode) << PIN_MODE_OFFSET))
+#define N32_PINMUX(port, pin, FUNC, pin_mode) (((port) << PORT_NUM_OFFSET) | ((pin) << PIN_NUM_OFFSET) | ((pin_mode) << PIN_MODE_OFFSET)) (FUNC)
 
-#define N32_PINMUX_GET_PIN(pinmux) ((pinmux >> PIN_NUM_OFFSET) & 0xF)
-#define N32_PINMUX_GET_PORT(pinmux) ((pinmux >> PORT_NUM_OFFSET) & 0xF)
-#define N32_PINMUX_GET_FUNC(pinmux) ((pinmux >> FUNC_NUM_OFFSET) & 0xF)
-#define N32_PINMUX_GET_PIN_MODE(pinmux) ((pinmux >> PIN_MODE_OFFSET) & 0xF)
-#define N32_PINMUX_GET_PORT_PIN(pinmux) ((pinmux >> PIN_NUM_OFFSET) & 0xFF)
+#define N32_PINMUX_GET_PIN(pinmux) ((pinmux->config >> PIN_NUM_OFFSET) & 0xF)
+#define N32_PINMUX_GET_PORT(pinmux) ((pinmux->config >> PORT_NUM_OFFSET) & 0xF)
+#define N32_PINMUX_GET_FUNC(pinmux) (pinmux->func)
+#define N32_PINMUX_GET_PIN_MODE(pinmux) ((pinmux->config >> PIN_MODE_OFFSET) & 0xF)
+#define N32_PINMUX_GET_PORT_PIN(pinmux) ((pinmux->config >> PIN_NUM_OFFSET) & 0xFF)
 
 #define N32_PINMUX_DT_INST_GET_ELEM(idx, x, inst) \
 	DT_PROP(DT_INST_PINCTRL_BY_IDX(inst, x, idx), pinmux),

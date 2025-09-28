@@ -98,10 +98,13 @@
 
 		pinctrl: pin-controller@40023400 {
 			compatible = "nsing,n32-pinctrl";
+			pinmux-controller;
+			#pinmux-cells = <2>;
 			reg = <0x40023400 0x1000>;
 			#address-cells = <1>;
 			#size-cells = <1>;
 			status = "okay";
+
 
 			gpioa: gpio@40023400 {
 				compatible = "nsing,n32-gpio";
@@ -139,43 +142,41 @@
 				status = "okay";
 			};
 
-		usart1: usart1@40013800 {
-			compatible = "nsing,n32-uart";
-			reg = <0x40013800 0x400>;
-			clocks = <&rcc N32_CLOCK_USART1>;
-			interrupts = <36 0>;
-			current-speed = <115200>;
-			status = "disabled";
-		};
+			usart1: usart1@40013800 {
+				compatible = "nsing,n32-uart";
+				reg = <0x40013800 0x400>;
+				clocks = <&rcc N32_CLOCK_USART1>;
+				interrupts = <36 0>;
+				current-speed = <115200>;
+				status = "disabled";
+			};
 
-		usart2: usart2@40004400 {
-			compatible = "nsing,n32-uart";
-			reg = <0x40004400 0x400>;
-			clocks = <&rcc N32_CLOCK_USART2>;
-			interrupts = <37 0>;
-			current-speed = <115200>;
-			status = "disabled";
-		};
+			usart2: usart2@40004400 {
+				compatible = "nsing,n32-uart";
+				reg = <0x40004400 0x400>;
+				clocks = <&rcc N32_CLOCK_USART2>;
+				interrupts = <37 0>;
+				current-speed = <115200>;
+				status = "disabled";
+			};
 
-	
+			uart3: uart6@40015000 {
+				compatible = "nsing,n32-uart";
+				reg = <0x40015000 0x400>;
+				clocks = <&rcc N32_CLOCK_UART3>;
+				interrupts = <38 0>;
+				current-speed = <115200>;
+				status = "disabled";
+			};
 
-		uart3: uart6@40015000 {
-			compatible = "nsing,n32-uart";
-			reg = <0x40015000 0x400>;
-			clocks = <&rcc N32_CLOCK_UART3>;
-			interrupts = <38 0>;
-			current-speed = <115200>;
-			status = "disabled";
-		};
-
-		uart4: uart@40015400 {
-			compatible = "nsing,n32-uart";
-			reg = <0x40015400 0x400>;
-			clocks = <&rcc N32_CLOCK_UART4>;
-			interrupts = <46 0>;
-			current-speed = <115200>;
-			status = "disabled";
-		};
+			uart4: uart@40015400 {
+				compatible = "nsing,n32-uart";
+				reg = <0x40015400 0x400>;
+				clocks = <&rcc N32_CLOCK_UART4>;
+				interrupts = <46 0>;
+				current-speed = <115200>;
+				status = "disabled";
+			};
 
 		};
 	};

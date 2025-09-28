@@ -6,6 +6,19 @@ compatible: "nsing,n32-pinctrl"
 
 include: base.yaml
 
+properties:
+  pinmux-controller:
+    type: boolean
+    description: Indicates that this node is a pinmux controller.
+
+  "#pinmux-cells":
+    const: 2
+    type: int
+
+pinmux-cells:
+  - config
+  - func
+
 child-binding:
   description: |
     N32 pin controller pin configuration state nodes.
@@ -14,11 +27,11 @@ child-binding:
       N32 pin controller pin configuration group.
 
     properties:
-      pinmux:
+      pinmuxs:
         required: true
-        type: array
+        type: phandle-array
         description: |
-          An array of pin setting.
+          An array of pinmux settings.
 
       remap:
         type: int
