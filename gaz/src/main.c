@@ -39,8 +39,13 @@ bool ina_on = true;
 
 static void gather_ina_input()
 {
-	struct sensor_value sensor_val;
+
+	if (!device_is_ready(ina_dev)) {
+        return;
+    }
+
 	if (ina_on) {
+		struct sensor_value sensor_val;
 		int ret = sensor_sample_fetch(ina_dev);
 		if (ret < 0) {
 			ERROR("error fetching sensor input!! %d", ret);
@@ -56,6 +61,9 @@ static void gather_ina_input()
 		vshunt = (sensor_value_to_double(&sensor_val) * 1000000);
 	}
 }
+
+
+#ifdef CONFIG_SHELL
 
 static void ina_enable(bool on)
 {
@@ -89,31 +97,14 @@ static int cmd_read_input(const struct shell *sh, size_t argc, char **argv)
 }
 
 SHELL_CMD_ARG_REGISTER(ina, NULL, "Read the input voltate and current on port H", cmd_read_input, 0, 0);
+#endif
 
 int main(void)
 {
-	// int ret;
-	// bool led_state = true;
-
-	// if (!gpio_is_ready_dt(&led)) {
-	// 	return 0;
-	// }
-
-	// ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
-	// if (ret < 0) {
-	// 	return 0;
-	// }
-
 	while (1) {
 		gather_ina_input();
-	// 	ret = gpio_pin_toggle_dt(&led);
-	// 	if (ret < 0) {
-	// 		return 0;
-	// 	}
 
-	// 	led_state = !led_state;
-	// 	// printf("LED state: %s\n", led_state ? "ON" : " OFF");
-		k_sleep(K_MSEC(SLEEP_TIME_MS));
+		k_msleep(SLEEP_TIME_MS);
 	}
 	return 0;
 }
@@ -131,7 +122,7 @@ void configure_cfb(void)
 		return;
 	}
 
-		if (display_set_pixel_format(display, PIXEL_FORMAT_MONO10) != 0) {
+	if (display_set_pixel_format(display, PIXEL_FORMAT_MONO10) != 0) {
 		if (display_set_pixel_format(display, PIXEL_FORMAT_MONO01) != 0) {
 			ERROR("Failed to set required pixel format");
 			return;
@@ -179,7 +170,7 @@ void cfb_task(void)
 {
 	configure_cfb();
 	char sbuf[10] = {0};
-	k_sleep(K_MSEC(3000));
+	k_msleep(3000);
 
 
 	while (1) {
@@ -229,3 +220,6 @@ void cfb_task(void)
 }
 
 K_THREAD_DEFINE(cfb_task_id, STACKSIZE, cfb_task, NULL, NULL, NULL, PRIORITY, 0, 0);
+
+extern void data_uart_task(void);
+K_THREAD_DEFINE(data_uart_task_id, 1024, data_uart_task, NULL, NULL, NULL, PRIORITY, 0, 0);

@@ -23,6 +23,13 @@
 		};
 	};
 
+	usart2_pa6_pa7: usart2_pa6_pa7 {
+		group1{
+			pinmuxs = <&pinctrl USART2_TX_PA6>,
+				<&pinctrl USART2_RX_PA7>;
+		};
+	};
+
 	i2c1_pb6_pb7: i2c1_pb6_pb7 {
 		group1{
 			pinmuxs = <&pinctrl I2C1_SCL_PB6>,
