@@ -90,6 +90,7 @@ static int cmd_read_input(const struct shell *sh, size_t argc, char **argv)
 
 SHELL_CMD_ARG_REGISTER(ina, NULL, "Read the input voltate and current on port H", cmd_read_input, 0, 0);
 
+extern void mgr_init(void);
 int main(void)
 {
 	// int ret;
@@ -103,6 +104,7 @@ int main(void)
 	// if (ret < 0) {
 	// 	return 0;
 	// }
+	mgr_init();
 
 	while (1) {
 		gather_ina_input();
@@ -131,7 +133,7 @@ void configure_cfb(void)
 		return;
 	}
 
-		if (display_set_pixel_format(display, PIXEL_FORMAT_MONO10) != 0) {
+	if (display_set_pixel_format(display, PIXEL_FORMAT_MONO10) != 0) {
 		if (display_set_pixel_format(display, PIXEL_FORMAT_MONO01) != 0) {
 			ERROR("Failed to set required pixel format");
 			return;
@@ -154,7 +156,7 @@ void configure_cfb(void)
 		ERROR("Could not clear framebuffer (err %d)\n", err);
 	}
 
-	err = cfb_print(display, "A*__*A", 0, 0);
+	err = cfb_print(display, "A**__**A", 0, 0);
 	if (err) {
 		ERROR("Could not display custom font (err %d)\n", err);
 	}
